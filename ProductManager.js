@@ -60,19 +60,22 @@ class ProductManager {
     return product;
   }
 
-  updateProduct(id, product) {
-    const index = this.products.findIndex(p => p.id === id);
-    if (index === -1) {
-      console.error('Producto no encontrado');
-      return;
+  updateProduct(id, productData) {
+    const productIndex = this.products.findIndex(p => p.id === id);
+    ;
+    if (productIndex !== -1) {
+      // Copiamos el objeto
+      const productToUpdate = Object.assign({}, this.products[productIndex]);
+
+      // Actualizamos solo las propiedades que se reciben en el objeto productData
+      Object.assign(productToUpdate, productData);
+
+      this.products[productIndex] = productToUpdate;
+      this.saveProducts();
+      console.log(`Producto con ID ${id} actualizado.`);
+    } else {
+      console.log(`Producto con ID ${id} no encontrado.`);
     }
-    if (product.id || product.code) {
-      console.error('No se puede modificar el id o código del producto');
-      return;
-    }
-    this.products[index] = { ...this.products[index], ...product };
-    this.saveProducts();
-    console.log(`El producto con id ${id} ha sido actualizado con éxito.`);
   }
 
   deleteProduct(id) {
@@ -90,7 +93,7 @@ class ProductManager {
 module.exports = ProductManager;
 //Ejemplo de uso
 
-productManager = new ProductManager('./products.json');
+const productManager = new ProductManager('./products.json');
 
 //Crear producto
 /* const newProduct = {
@@ -105,13 +108,13 @@ productManager.addProduct(newProduct);  */
 
 
 // Actualizar producto
-const productToUpdate = productManager.getProductById(1);
-
-productToUpdate.title = 'Nuevo título';
-productToUpdate.description = 'Nueva descripción';
-productToUpdate.stock = 50;
-
-productManager.updateProduct(1, productToUpdate);
+/* productManager.updateProduct(1, {
+  title: 'Nuevo nombre',
+  description: 'Nueva descripción',
+  price: 450,
+  thumbnail: 'nueva-imagen.jpg',
+  stock: 101
+}); */
 
 
 //Borrar producto
