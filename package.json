@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Chivi1/desafiosBackend/issues"
   },
-  "homepage": "https://github.com/Chivi1/desafiosBackend#readme"
+  "homepage": "https://github.com/Chivi1/desafiosBackend#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
 }

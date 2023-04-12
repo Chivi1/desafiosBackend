@@ -1,4 +1,5 @@
-const fs = require('fs');
+import fs from 'fs';
+
 
 class ProductManager {
   constructor(path) {
@@ -90,7 +91,7 @@ class ProductManager {
   }
 }
 
-module.exports = ProductManager;
+export default ProductManager;
 //Ejemplo de uso
 
 const productManager = new ProductManager('./products.json');
@@ -99,12 +100,12 @@ const productManager = new ProductManager('./products.json');
 /* const newProduct = {
     title: 'Nuevo producto',
     description: 'Descripción del nuevo producto',
-    price: 100,
+    price: 300,
     thumbnail: 'ruta/imagen.jpg',
-    code: 'ABC123',
+    code: 'ADBC525',
     stock: 100
 };
-productManager.addProduct(newProduct);  */
+productManager.addProduct(newProduct);   */
 
 
 // Actualizar producto
