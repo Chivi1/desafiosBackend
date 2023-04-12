@@ -2,7 +2,6 @@ import express from 'express';
 import ProductManager from '../ProductManager';
 
 const app = express();
-const PORT = 8080;
 
 const productManager = new ProductManager('./products.json');
 
@@ -23,6 +22,4 @@ app.get('/products/:pid', (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+app.listen(8080,()=>console.log('Listening on PORT 8080'));
