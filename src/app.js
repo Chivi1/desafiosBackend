@@ -1,14 +1,16 @@
 import express from 'express';
-import ProductManager from '../ProductManager';
+import ProductManager from './ProductManager.js';
 
 const app = express();
 
-const productManager = new ProductManager('./products.json');
+const productManager = new ProductManager('../products.json');
 
 app.get('/products', (req, res) => {
   const limit = req.query.limit;
   const products = productManager.getProducts();
+  console.log(limit, products)
   const limitedProducts = limit ? products.slice(0, limit) : products;
+  console.log(limitedProducts)
   res.json(limitedProducts);
 });
 
